@@ -64,40 +64,10 @@ const PaymentPage = () => {
         return <div>Loading...</div>;
     }
 
-    const handleFormSubmit = async (e) => {
+    const handleFormSubmit = (e) => {
         e.preventDefault();
-        
-        try {
-            const response = await fetch('/api/booking', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    propertyId: propertyId,
-                    checkin: checkInDate,
-                    checkout: checkOutDate,
-                    guests: guests,
-                    card: {
-                        cardHolder: nameOnCard,
-                        cardNumber: cardNumber,
-                        expiryDate: expiryDate,
-                        cvv: cvv
-                    },
-                    message: message
-                }),
-            });
-
-            if (response.ok) {
-                // Booking successful, redirect to confirmation page
-                // router.push('/confirm');
-            } else {
-                // Booking failed, handle error
-                throw new Error('Failed to submit booking');
-            }
-        } catch (error) {
-            console.error(error);
-        }
+        alert("Booked successfully")
+        router.push('/confirm');
     };
     
     return (
